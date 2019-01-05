@@ -1,5 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import { setAuthedUser } from '../actions/authedUser'
 
 class SignIn extends React.Component {
 
@@ -13,19 +15,31 @@ class SignIn extends React.Component {
     })
   }
 
+  signIn = () => {
+    const { user } = this.state
+    this.props.dispatch(setAuthedUser(user))
+  }
+
   render() {
+
+    const { user } = this.state
+    const { authedUser } = this.props
+    if (authedUser !== null) {
+      return <Redirect to='/' />
+    }
+
     return (
       <div>
-        <select value={this.state.user} onChange={this.onSelectUser} >
+        <select value={user} onChange={this.onSelectUser} >
           <option value="" hidden style={{ textDecorationColor: 'grey' }}>Select User</option>
           {this.props.usersList.map((user) =>
             <option value={user} key={user} >{user}</option>
           )}
         </select>
         <div>
-          {this.state.user}
+          {user}
         </div>
-        <button>
+        <button disabled={!user} onClick={this.signIn} >
           Sign in
         </button>
       </div>
@@ -33,9 +47,10 @@ class SignIn extends React.Component {
   }
 }
 
-const mapStateToProps = ({ users }) => {
+const mapStateToProps = ({ users, authedUser }) => {
   return {
     usersList: Object.keys(users),
+    authedUser
   }
 }
 
