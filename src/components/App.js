@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
+import Home from './Home'
+import SignIn from './SignIn'
 
 class App extends Component {
 
@@ -10,11 +13,33 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Would You rather ?</h1>
-      </div>
+      <Router>
+        <Fragment>
+          <Route path='/signin' component={SignIn} />
+          <Route exact path="/"
+            render={() => (
+              this.props.authedUser
+                ? <Home />
+                : <Redirect to="/signin" />
+            )}
+          />
+          <Route exact path="/home"
+            render={() => (
+              this.props.authedUser
+                ? <Home />
+                : <Redirect to="/signin" />
+            )}
+          />
+        </Fragment>
+      </Router>
     );
   }
 }
 
-export default connect()(App)
+const mapStateToProps = ({ authedUser }) => {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(App)
