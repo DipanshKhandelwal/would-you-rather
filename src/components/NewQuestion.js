@@ -1,10 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends React.Component {
 
   state = {
     optionOne: '',
     optionTwo: ''
+  }
+
+  saveNewQuestion = () => {
+    const { optionTwo, optionOne } = this.state
+    const { dispatch } = this.props
+    dispatch(handleAddQuestion(optionOne, optionTwo))
+    this.setState({ optionOne: '', optionTwo: '' })
+    this.props.history.push('/home')
   }
 
   render() {
@@ -26,9 +37,12 @@ class NewQuestion extends React.Component {
           onChange={(e) => this.setState({ optionTwo: e.target.value })}
           placeholder='Enter option two text here'
         />
+        <button onClick={this.saveNewQuestion} disabled={optionOne === '' || optionTwo === ''} >
+          Submit
+        </button>
       </div>
     )
   }
 }
 
-export default NewQuestion
+export default withRouter(connect()(NewQuestion))
