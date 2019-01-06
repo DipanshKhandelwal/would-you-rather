@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
 import Home from './Home'
 import SignIn from './SignIn'
+import NavBar from './Navbar'
 
 class App extends Component {
 
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <NavBar />
           <Route path='/signin' component={SignIn} />
           <Route exact path="/"
             render={() => (
