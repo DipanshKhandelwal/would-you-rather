@@ -5,6 +5,7 @@ import { handleInitialData } from '../actions/shared'
 import Home from './Home'
 import SignIn from './SignIn'
 import NavBar from './Navbar'
+import LeaderBoard from './LeaderBoard'
 
 class App extends Component {
 
@@ -18,6 +19,7 @@ class App extends Component {
         <Fragment>
           <NavBar />
           <Route path='/signin' component={SignIn} />
+          <Route path='/leaderboard' component={LeaderBoard} />
           <Route exact path="/"
             render={() => (
               this.props.authedUser
