@@ -20,6 +20,16 @@ class NavBar extends React.Component {
               Home
             </NavLink>
           </li>
+          <li>
+            <NavLink to='/newquestion' exact>
+              New Question
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to='/leaderboard' exact>
+              Leaderboard
+            </NavLink>
+          </li>
           {authedUser
             ?
             <span>

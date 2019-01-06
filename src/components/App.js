@@ -6,6 +6,7 @@ import Home from './Home'
 import SignIn from './SignIn'
 import NavBar from './Navbar'
 import LeaderBoard from './LeaderBoard'
+import NewQuestion from './NewQuestion'
 
 class App extends Component {
 
@@ -20,6 +21,13 @@ class App extends Component {
           <NavBar />
           <Route path='/signin' component={SignIn} />
           <Route path='/leaderboard' component={LeaderBoard} />
+          <Route exact path="/newquestion"
+            render={() => (
+              this.props.authedUser
+                ? <NewQuestion />
+                : <Redirect to="/signin" />
+            )}
+          />
           <Route exact path="/"
             render={() => (
               this.props.authedUser
