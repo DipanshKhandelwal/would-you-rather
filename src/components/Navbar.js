@@ -16,17 +16,17 @@ class NavBar extends React.Component {
       <nav>
         <ul>
           <li>
-            <NavLink to='/home' exact>
+            <NavLink to='/home' activeStyle={{ fontWeight: 'bold' }} >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/newquestion' exact>
+            <NavLink to='/newquestion' activeStyle={{ fontWeight: 'bold' }} >
               New Question
             </NavLink>
           </li>
           <li>
-            <NavLink to='/leaderboard' exact>
+            <NavLink to='/leaderboard' activeStyle={{ fontWeight: 'bold' }} >
               Leaderboard
             </NavLink>
           </li>
@@ -40,7 +40,7 @@ class NavBar extends React.Component {
             </span>
             :
             <li>
-              <NavLink to='/signin'>Sign In</NavLink>
+              <NavLink to='/signin' activeStyle={{ fontWeight: 'bold' }}  >Sign In</NavLink>
             </li>
           }
         </ul>

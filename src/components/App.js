@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
+import LoadingBar from 'react-redux-loading'
 import Home from './Home'
 import SignIn from './SignIn'
 import NavBar from './Navbar'
@@ -19,6 +20,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+          <LoadingBar />
           <NavBar />
           <Route path='/signin' component={SignIn} />
           <Route path='/leaderboard' component={LeaderBoard} />
@@ -39,7 +41,7 @@ class App extends Component {
           <Route exact path="/"
             render={() => (
               this.props.authedUser
-                ? <Home />
+                ? <Redirect to="/home" />
                 : <Redirect to="/signin" />
             )}
           />

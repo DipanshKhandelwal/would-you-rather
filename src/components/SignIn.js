@@ -25,7 +25,7 @@ class SignIn extends React.Component {
     const { user } = this.state
     const { authedUser } = this.props
     if (authedUser !== null) {
-      return <Redirect to='/' />
+      return <Redirect to='/home' />
     }
 
     return (
