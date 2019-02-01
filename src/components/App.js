@@ -17,50 +17,60 @@ class App extends Component {
   }
 
   render() {
+    const { users, questions } = this.props
+    const loading = users === null || questions === null
+
     return (
       <Router>
         <Fragment>
           <LoadingBar />
-          <NavBar />
-          <Route path='/signin' component={SignIn} />
-          <Route path='/leaderboard' component={LeaderBoard} />
-          <Route exact path="/question/:id"
-            render={() => (
-              this.props.authedUser
-                ? <Question />
-                : <Redirect to="/signin" />
-            )}
-          />
-          <Route exact path="/newquestion"
-            render={() => (
-              this.props.authedUser
-                ? <NewQuestion />
-                : <Redirect to="/signin" />
-            )}
-          />
-          <Route exact path="/"
-            render={() => (
-              this.props.authedUser
-                ? <Redirect to="/home" />
-                : <Redirect to="/signin" />
-            )}
-          />
-          <Route exact path="/home"
-            render={() => (
-              this.props.authedUser
-                ? <Home />
-                : <Redirect to="/signin" />
-            )}
-          />
+          {loading
+            ? null
+            : <div>
+              <NavBar />
+              <Route path='/signin' component={SignIn} />
+              <Route path='/leaderboard' component={LeaderBoard} />
+              <Route exact path="/question/:id"
+                render={() => (
+                  this.props.authedUser
+                    ? <Question />
+                    : <Redirect to="/signin" />
+                )}
+              />
+              <Route exact path="/newquestion"
+                render={() => (
+                  this.props.authedUser
+                    ? <NewQuestion />
+                    : <Redirect to="/signin" />
+                )}
+              />
+              <Route exact path="/"
+                render={() => (
+                  this.props.authedUser
+                    ? <Redirect to="/home" />
+                    : <Redirect to="/signin" />
+                )}
+              />
+              <Route exact path="/home"
+                render={() => (
+                  this.props.authedUser
+                    ? <Home />
+                    : <Redirect to="/signin" />
+                )}
+              />
+            </div>
+          }
         </Fragment>
       </Router>
     );
   }
 }
 
-const mapStateToProps = ({ authedUser }) => {
+const mapStateToProps = ({ authedUser, questions, users }) => {
   return {
-    authedUser
+    authedUser,
+    questions,
+    users
   }
 }
 
