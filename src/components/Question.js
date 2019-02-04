@@ -16,15 +16,18 @@ class Question extends React.Component {
   render() {
     const { users, authedUser, questions, id } = this.props
     const status = Object.keys(users[authedUser].answers).includes(id) ? 'answered' : 'unanswered'
+    let selected = null
+    if(status == 'answered') {
+      selected = users[authedUser].answers[id]
+    }
     const optionOneVotes = questions[id].optionOne.votes.length
     const optionOneText = questions[id].optionOne.text
     const optionTwoVotes = questions[id].optionTwo.votes.length
     const optionTwoText = questions[id].optionTwo.text
 
     return (
-
       <div style={{ padding: 15, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
-        <Card style={{ padding: 50, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+        <Card style={{ backgroundColor: '#6969694a', padding: 20, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
           <h2>{users[questions[id].author].name} asks ... </h2>
           {status === 'answered'
             ? <PollResults
@@ -32,6 +35,7 @@ class Question extends React.Component {
               optionTwoVotes={optionTwoVotes}
               optionOneText={optionOneText}
               optionTwoText={optionTwoText}
+              selected={selected}
             />
             : <PollForm
               optionOneText={optionOneText}

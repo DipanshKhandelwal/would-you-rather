@@ -44,7 +44,7 @@ class SignIn extends React.Component {
 
     return (
       <div style={{ padding: 15, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
-        <Card style={{ padding: 15, paddingLeft: 30, paddingRight: 30, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+        <Card style={{ backgroundColor: '#4052b466', padding: 15, paddingLeft: 30, paddingRight: 30, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
           <h1>Would You Rather !!</h1>
           <img style={{ height: 250, width: 250 }} src={require('../assets/icon.png')} />
           <h1> Sign In </h1>

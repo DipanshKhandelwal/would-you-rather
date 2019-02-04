@@ -24,7 +24,7 @@ class PollForm extends React.Component {
 
     return (
       <div style={{ padding: 15, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
-        <Card style={{ padding: 50, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+        <Card style={{ backgroundColor: '#4052b466', padding: 50, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
           <h3>Would you rather ...</h3>
           <FormControl component="fieldset" >
             <RadioGroup
