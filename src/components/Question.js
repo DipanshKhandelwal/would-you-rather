@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
 import PollResults from './PollResults'
 import PollForm from './PollForm'
+import Card from '@material-ui/core/Card'
 
 class Question extends React.Component {
 
@@ -21,22 +22,24 @@ class Question extends React.Component {
     const optionTwoText = questions[id].optionTwo.text
 
     return (
-      <div>
-        <p>Question - {id}</p>
-        <p>{status}</p>
-        {status === 'answered'
-          ? <PollResults
-            optionOneVotes={optionOneVotes}
-            optionTwoVotes={optionTwoVotes}
-            optionOneText={optionOneText}
-            optionTwoText={optionTwoText}
-          />
-          : <PollForm
-            optionOneText={optionOneText}
-            optionTwoText={optionTwoText}
-            submitAnswer={this.submitAnswer}
-          />
-        }
+
+      <div style={{ padding: 15, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+        <Card style={{ padding: 50, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+          <h2>{users[questions[id].author].name} asks ... </h2>
+          {status === 'answered'
+            ? <PollResults
+              optionOneVotes={optionOneVotes}
+              optionTwoVotes={optionTwoVotes}
+              optionOneText={optionOneText}
+              optionTwoText={optionTwoText}
+            />
+            : <PollForm
+              optionOneText={optionOneText}
+              optionTwoText={optionTwoText}
+              submitAnswer={this.submitAnswer}
+            />
+          }
+        </Card>
       </div>
     )
   }
