@@ -35,7 +35,7 @@ class Home extends React.Component {
               questionsIds.map((id) => {
                 if (Object.keys(users[authedUser].answers).includes(id)) {
                   return (
-                    <Card key={id} style={{ padding: 10, margin: 10, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                    <Card key={id} style={{ padding: 10, margin: 30, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
                       <h2>{users[questions[id].author].name} asks ... </h2>
                       ... {questions[id].optionOne.text} ... Or
                       <Link to={`/question/${id}`} style={{ textDecoration: 'none' }} >
@@ -52,7 +52,7 @@ class Home extends React.Component {
               questionsIds.map((id) => {
                 if (!Object.keys(users[authedUser].answers).includes(id)) {
                   return (
-                    <Card key={id} style={{ padding: 10, margin: 10, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
+                    <Card key={id} style={{ padding: 10, margin: 30, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
                       <h2>{users[questions[id].author].name} asks ... </h2>
                       ... {questions[id].optionOne.text} ... Or
                       <Link to={`/question/${id}`} style={{ textDecoration: 'none' }} >
