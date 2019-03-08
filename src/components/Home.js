@@ -26,14 +26,14 @@ class Home extends React.Component {
         <Card style={{ backgroundColor: 'rgba(64, 82, 180, 0.4)', display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center', backgroundColor: '#6969694a' }} >
           <AppBar position="static" style={{ display: 'flex', flex: 1, justifyContent: 'center' }} >
             <Tabs value={tab} onChange={this.handleChange} style={{ display: 'flex', flex: 1, justifyContent: 'center' }} >
-              <Tab label="Answered" />
               <Tab label="Unanswered" />
+              <Tab label="Answered" />
             </Tabs>
           </AppBar>
           {tab === 0 &&
             <ul style={{ padding: 0, marginLeft: 40, marginRight: 40 }} >{
               questionsIds.map((id) => {
-                if (Object.keys(users[authedUser].answers).includes(id)) {
+                if (!Object.keys(users[authedUser].answers).includes(id)) {
                   return (
                     <Card key={id} style={{ backgroundColor: 'rgba(64, 82, 180, 0.4)', padding: 10, margin: 30, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
                       <h2>{users[questions[id].author].name} asks ... </h2>
@@ -50,7 +50,7 @@ class Home extends React.Component {
           {tab === 1 &&
             <ul style={{ padding: 0, marginLeft: 40, marginRight: 40 }} >{
               questionsIds.map((id) => {
-                if (!Object.keys(users[authedUser].answers).includes(id)) {
+                if (Object.keys(users[authedUser].answers).includes(id)) {
                   return (
                     <Card key={id} style={{ backgroundColor: 'rgba(64, 82, 180, 0.4)', padding: 10, margin: 30, display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} >
                       <h2>{users[questions[id].author].name} asks ... </h2>
