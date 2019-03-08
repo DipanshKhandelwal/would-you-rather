@@ -6,6 +6,9 @@
 
 <p align="center">Would you rather select this or that ?</p>
 
+
+A web application that lets users propose questions, which other users can then answer. This app was made with react and it's learning goal was to learn Redux.
+
 ## Clone
 ``` bash
 git clone https://github.com/DipanshKhandelwal/would-you-rather.git
