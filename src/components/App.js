@@ -29,10 +29,16 @@ class App extends Component {
             ? null
             : <div>
               <NavBar />
-              <Switch >
+              <Switch>
                 <Route path='/signin' component={SignIn} />
-                <Route path='/leaderboard' component={LeaderBoard} />
                 <Route path='/notfound' component={NotFound} />
+                <Route exact path="/leaderboard"
+                  render={() => (
+                    this.props.authedUser
+                      ? <LeaderBoard />
+                      : <Redirect to="/signin" />
+                  )}
+                />
                 <Route exact path="/question/:id"
                   render={() => (
                     this.props.authedUser
