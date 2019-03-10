@@ -43,7 +43,7 @@ class NavBar extends React.Component {
             <Link to='/home' style={{ color: 'white', textDecoration: 'none' }} >
               <Button color="inherit">Home</Button>
             </Link>
-            <Link to='/newquestion' style={{ color: 'white', textDecoration: 'none' }} >
+            <Link to='/add' style={{ color: 'white', textDecoration: 'none' }} >
               <Button color="inherit">New Question</Button>
             </Link>
             <Link to='/leaderboard' style={{ color: 'white', textDecoration: 'none' }} >

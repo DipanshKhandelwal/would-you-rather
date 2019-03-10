@@ -37,7 +37,7 @@ class App extends Component {
                     : <Redirect to="/signin" />
                 )}
               />
-              <Route exact path="/newquestion"
+              <Route exact path="/add"
                 render={() => (
                   this.props.authedUser
                     ? <NewQuestion />
