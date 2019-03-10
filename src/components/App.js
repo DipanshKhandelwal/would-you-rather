@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import Home from './Home'
@@ -29,37 +29,44 @@ class App extends Component {
             ? null
             : <div>
               <NavBar />
-              <Route path='/signin' component={SignIn} />
-              <Route path='/leaderboard' component={LeaderBoard} />
-              <Route path='/notfound' component={NotFound} />
-              <Route exact path="/question/:id"
-                render={() => (
-                  this.props.authedUser
-                    ? <Question />
-                    : <Redirect to="/signin" />
-                )}
-              />
-              <Route exact path="/add"
-                render={() => (
-                  this.props.authedUser
-                    ? <NewQuestion />
-                    : <Redirect to="/signin" />
-                )}
-              />
-              <Route exact path="/"
-                render={() => (
-                  this.props.authedUser
-                    ? <Redirect to="/home" />
-                    : <Redirect to="/signin" />
-                )}
-              />
-              <Route exact path="/home"
-                render={() => (
-                  this.props.authedUser
-                    ? <Home />
-                    : <Redirect to="/signin" />
-                )}
-              />
+              <Switch >
+                <Route path='/signin' component={SignIn} />
+                <Route path='/leaderboard' component={LeaderBoard} />
+                <Route path='/notfound' component={NotFound} />
+                <Route exact path="/question/:id"
+                  render={() => (
+                    this.props.authedUser
+                      ? <Question />
+                      : <Redirect to="/signin" />
+                  )}
+                />
+                <Route exact path="/add"
+                  render={() => (
+                    this.props.authedUser
+                      ? <NewQuestion />
+                      : <Redirect to="/signin" />
+                  )}
+                />
+                <Route exact path="/"
+                  render={() => (
+                    this.props.authedUser
+                      ? <Redirect to="/home" />
+                      : <Redirect to="/signin" />
+                  )}
+                />
+                <Route exact path="/home"
+                  render={() => (
+                    this.props.authedUser
+                      ? <Home />
+                      : <Redirect to="/signin" />
+                  )}
+                />
+                <Route
+                  render={() => (
+                    <NotFound />
+                  )}
+                />
+              </Switch>
             </div>
           }
         </Fragment>

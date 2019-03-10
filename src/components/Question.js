@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Redirect } from 'react-router-dom'
 import { handleAnswerQuestion } from '../actions/questions'
 import PollResults from './PollResults'
 import PollForm from './PollForm'
@@ -15,6 +15,7 @@ class Question extends React.Component {
 
   render() {
     const { users, authedUser, questions, id } = this.props
+    if(!questions[id]) return <Redirect to='/notfound' />
     const status = Object.keys(users[authedUser].answers).includes(id) ? 'answered' : 'unanswered'
     let selected = null
     if(status == 'answered') {
