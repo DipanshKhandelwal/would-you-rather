@@ -9,6 +9,7 @@ import NavBar from './Navbar'
 import LeaderBoard from './LeaderBoard'
 import NewQuestion from './NewQuestion'
 import Question from './Question'
+import NotFound from './NotFound'
 
 class App extends Component {
 
@@ -30,6 +31,7 @@ class App extends Component {
               <NavBar />
               <Route path='/signin' component={SignIn} />
               <Route path='/leaderboard' component={LeaderBoard} />
+              <Route path='/notfound' component={NotFound} />
               <Route exact path="/question/:id"
                 render={() => (
                   this.props.authedUser
